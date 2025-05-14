@@ -35,19 +35,17 @@ class Record:
     def remove_phone(self, number: str):
         self.phones = list(filter(lambda phone: phone == number, self.phones))
 
-    def edit_phone(self, old_number, new_number):
-         self.phones = list(
-            map(
-                lambda phone: Phone(new_number) if phone.value == old_number else phone,
-                self.phones,
-            )
-        )
+    def edit_phone(self, old_phone: str, new_phone: str):
+         for i, phone in enumerate(self.phones):
+             if phone.value == old_phone:
+                 self.phones[i] = Phone(new_phone)
+                 return
+             raise ValueError(f"Phone '{old_phone}' not found for contact '{self.name.value}'.")
 
     def find_phone(self, number):
         for phone in self.phones:
             if phone.value == number:
                 return phone
-
 
 class AddressBook(UserDict):
     def add_record(self, record):
