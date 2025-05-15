@@ -40,7 +40,7 @@ class Record:
              if phone.value == old_phone:
                  self.phones[i] = Phone(new_phone)
                  return
-             raise ValueError(f"Phone '{old_phone}' not found for contact '{self.name.value}'.")
+         raise ValueError(f"Phone '{old_phone}' not found for contact '{self.name.value}'.")
 
     def find_phone(self, number):
         for phone in self.phones:
